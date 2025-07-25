@@ -8,6 +8,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/product")
@@ -29,7 +31,10 @@ public class ProductController {
         return ResponseEntity.ok(productService.get(id));
     }
 
-
+    @GetMapping("/all")
+    public ResponseEntity<List<ProductResponseDto>> getAll(){
+        return ResponseEntity.ok(productService.getAll());
+    }
 
 
 }

@@ -18,7 +18,7 @@ public class CustomerRequestDto {
     private String phoneNumber;
 
     @Cascade(CascadeType.PERSIST)
-    private List<Product> products;
+    private List<ProductRequestDto> products;
 
     private String description;
 }

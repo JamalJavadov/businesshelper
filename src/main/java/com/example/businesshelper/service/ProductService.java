@@ -11,6 +11,8 @@ import com.example.businesshelper.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ProductService {
@@ -37,6 +39,12 @@ public class ProductService {
     public ProductResponseDto get(long id) {
         Product product = productRepository.findById(id).orElseThrow();
         return productMapper.toDto(product);
+    }
+
+    public List<ProductResponseDto> getAll(){
+        return productRepository.findAll().stream()
+                .map(productMapper::toDto)
+                .toList();
     }
 
 
