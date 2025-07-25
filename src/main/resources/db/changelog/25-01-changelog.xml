@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.31.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1753435110730-1" author="camal">
+        <createTable tableName="customer">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_customer"/>
+            </column>
+            <column name="instagram_name" type="VARCHAR(255)"/>
+            <column name="phone_number" type="VARCHAR(255)"/>
+            <column name="local_date_time" type="DATETIME"/>
+            <column name="description" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="1753435110730-2" author="camal">
+        <createTable tableName="customer_products">
+            <column name="customer_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="products_id" type="BIGINT">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1753435110730-3" author="camal">
+        <createTable tableName="product">
+            <column autoIncrement="true" name="id" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_product"/>
+            </column>
+            <column name="description" type="VARCHAR(255)"/>
+            <column name="image_url" type="VARCHAR(255)"/>
+            <column name="product_url" type="VARCHAR(255)"/>
+            <column name="purchase_price" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="selling_price" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="category" type="VARCHAR(255)"/>
+            <column name="created_time" type="DATETIME"/>
+            <column name="customer_id" type="BIGINT"/>
+            <column name="is_given_to_customer" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="1753435110730-4" author="camal">
+        <addUniqueConstraint columnNames="instagram_name" constraintName="uc_customer_instagramname"
+                             tableName="customer"/>
+    </changeSet>
+    <changeSet id="1753435110730-5" author="camal">
+        <addUniqueConstraint columnNames="products_id" constraintName="uc_customer_products_products"
+                             tableName="customer_products"/>
+    </changeSet>
+    <changeSet id="1753435110730-6" author="camal">
+        <addForeignKeyConstraint baseColumnNames="customer_id" baseTableName="product"
+                                 constraintName="FK_PRODUCT_ON_CUSTOMER" referencedColumnNames="id"
+                                 referencedTableName="customer"/>
+    </changeSet>
+    <changeSet id="1753435110730-7" author="camal">
+        <addForeignKeyConstraint baseColumnNames="customer_id" baseTableName="customer_products"
+                                 constraintName="fk_cuspro_on_customer" referencedColumnNames="id"
+                                 referencedTableName="customer"/>
+    </changeSet>
+    <changeSet id="1753435110730-8" author="camal">
+        <addForeignKeyConstraint baseColumnNames="products_id" baseTableName="customer_products"
+                                 constraintName="fk_cuspro_on_product" referencedColumnNames="id"
+                                 referencedTableName="product"/>
+    </changeSet>
+
+</databaseChangeLog>
