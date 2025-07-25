@@ -3,6 +3,8 @@ package com.example.businesshelper.model.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
@@ -29,6 +31,7 @@ public class Customer {
     private LocalDateTime localDateTime;
 
     @OneToMany
+    @Cascade(CascadeType.PERSIST)
     private List<Product> products;
 
     private String description;

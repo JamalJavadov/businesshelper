@@ -12,8 +12,6 @@ import lombok.*;
 public class ProductRequestDto {
     private String description;
 
-    private String imageUrl;
-
     private String productUrl;
 
     private double purchasePrice;

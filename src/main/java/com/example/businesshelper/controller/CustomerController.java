@@ -30,6 +30,4 @@ public class CustomerController {
     public ResponseEntity<CustomerResponseDto> get(@PathVariable String instagramName){
         return ResponseEntity.ok(customerService.get(instagramName));
     }
-
-
 }

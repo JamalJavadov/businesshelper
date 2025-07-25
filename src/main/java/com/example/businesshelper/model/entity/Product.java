@@ -37,5 +37,5 @@ public class Product {
     @ManyToOne
     private Customer customer;
 
-    private boolean isGivenToCustomer = false;
+    private boolean isGivenToCustomer;
 }

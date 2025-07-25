@@ -22,6 +22,8 @@ public class ProductResponseDto {
 
     private Category category;
 
-    private CustomerResponseDto customerResponseDto;
+    private String customerInstagramName;
+
+    private boolean isGivenToCustomer;
 
 }
