@@ -10,6 +10,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/v1/customer")
@@ -29,5 +31,10 @@ public class CustomerController {
     @GetMapping("/get/{instagramName}")
     public ResponseEntity<CustomerResponseDto> get(@PathVariable String instagramName){
         return ResponseEntity.ok(customerService.get(instagramName));
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<CustomerResponseDto>> getAll(){
+        return ResponseEntity.ok(customerService.getAll());
     }
 }

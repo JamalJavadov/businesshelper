@@ -24,6 +24,6 @@ public class ProductResponseDto {
 
     private String customerInstagramName;
 
-    private boolean isGivenToCustomer;
+    private boolean active;
 
 }

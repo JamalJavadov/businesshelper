@@ -3,8 +3,6 @@ package com.example.businesshelper.model.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.Cascade;
-import org.hibernate.annotations.CascadeType;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
@@ -22,7 +20,7 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(unique = true)
+    @Column(unique = true )
     private String instagramName;
 
     private String phoneNumber;
@@ -30,8 +28,7 @@ public class Customer {
     @CreationTimestamp
     private LocalDateTime localDateTime;
 
-    @OneToMany
-    @Cascade(CascadeType.PERSIST)
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
     private List<Product> products;
 
     private String description;

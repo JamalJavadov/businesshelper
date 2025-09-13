@@ -1,5 +1,5 @@
 server:
-  port: 8082
+  port: 8081
 spring:
   cloudinary:
     cloud-name: de01sq6e6
@@ -10,7 +10,7 @@ spring:
       max-file-size: 100MB
       max-request-size: 100MB
   datasource:
-    url: jdbc:postgresql://localhost:5432/business-helper
+    url: jdbc:postgresql://localhost:5432/businesshelper
     username: postgres
     password: camal123
     driver-class-name: org.postgresql.Driver

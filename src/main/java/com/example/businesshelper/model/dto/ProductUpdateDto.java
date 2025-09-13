@@ -26,5 +26,5 @@ public class ProductUpdateDto {
 
     private String customerInstagramName;
 
-    private boolean isGivenToCustomer;
+    private boolean active;
 }

@@ -35,7 +35,8 @@ public class Product {
     private LocalDateTime createdTime;
 
     @ManyToOne
+    @JoinColumn(name = "customer_id")
     private Customer customer;
 
-    private boolean isGivenToCustomer;
+    private boolean active;
 }

@@ -23,7 +23,7 @@ public class ProductService {
     public ProductResponseDto create(ProductRequestDto productRequestDto) {
         Product product = productMapper.toEntity(productRequestDto);
         Customer customer = customerRepository.findCustomerByInstagramName(productRequestDto.getCustomerInstagramName()).orElseThrow();
-
+        product.setActive(true);
         product.setCustomer(customer);
         return productMapper.toDto(productRepository.save(product));
     }
